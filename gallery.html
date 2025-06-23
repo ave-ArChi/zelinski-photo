@@ -22,11 +22,16 @@
     <section>
       <h2>Галерея</h2>
       <div class="gallery">
-        <img src="images/photo1.png" alt="Фото 1">
-        <img src="images/photo2.png" alt="Фото 2">
+        <img src="images/photo1.png" alt="Фото 1" class="lightbox-trigger">
+        <img src="images/photo2.png" alt="Фото 2" class="lightbox-trigger">
       </div>
     </section>
   </main>
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-image" src="" alt="Увеличенное фото">
+  </div>
+  <script src="js/script.js"></script>
   
 <footer>
   <p>&copy; 2025 Zelinski Photo</p>
