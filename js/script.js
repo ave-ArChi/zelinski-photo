@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.querySelector(".lightbox-image");
@@ -43,13 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("keydown", (e) => {
     if (lightbox.style.display === "flex") {
-      if (e.key === "ArrowRight") {
-        showImage((currentIndex + 1) % images.length);
-      } else if (e.key === "ArrowLeft") {
-        showImage((currentIndex - 1 + images.length) % images.length);
-      } else if (e.key === "Escape") {
-        lightbox.style.display = "none";
-      }
+      if (e.key === "ArrowRight") showImage((currentIndex + 1) % images.length);
+      if (e.key === "ArrowLeft") showImage((currentIndex - 1 + images.length) % images.length);
+      if (e.key === "Escape") lightbox.style.display = "none";
     }
   });
 });
