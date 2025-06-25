@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Галерея - Zelinski Photo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  
-<nav class="sidebar">
+  <nav class="sidebar">
   <h1>Zelinski Photo</h1>
   <ul>
     <li><a href="gallery.html">Галерея</a></li>
@@ -17,25 +16,24 @@
     <li><a href="pricing.html">Прайс-лист</a></li>
   </ul>
 </nav>
-
   <main>
     <section>
       <h2>Галерея</h2>
       <div class="gallery">
-        <img src="images/photo1.png" alt="Фото 1" class="lightbox-trigger">
-        <img src="images/photo2.png" alt="Фото 2" class="lightbox-trigger">
+        <img src="images/photo1.png" alt="Фото 1" class="lightbox-trigger" />
+        <img src="images/photo2.png" alt="Фото 2" class="lightbox-trigger" />
       </div>
     </section>
   </main>
   <div id="lightbox" class="lightbox">
     <span class="lightbox-close">&times;</span>
-    <img class="lightbox-image" src="" alt="Увеличенное фото">
+    <img class="lightbox-image" src="" alt="Увеличенное фото" />
+    <button class="lightbox-prev">&#10094;</button>
+    <button class="lightbox-next">&#10095;</button>
   </div>
   <script src="js/script.js"></script>
-  
-<footer>
+  <footer>
   <p>&copy; 2025 Zelinski Photo</p>
 </footer>
-
 </body>
 </html>
