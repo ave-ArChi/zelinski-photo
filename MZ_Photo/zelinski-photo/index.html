@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zelinski Photo</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo">Zelinski</div>
+    <ul>
+      <li><a href="index.html" class="active">Главная</a></li>
+      <li><a href="gallery.html">Галерея</a></li>
+      <li><a href="about.html">О себе</a></li>
+      <li><a href="pricing.html">Прайс-лист</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-content fade-in">
+    <section class="hero">
+      <h1>Фотография как искусство</h1>
+      <p class="lead">Эмоции. Свет. Момент.</p>
+      <a href="gallery.html" class="btn-primary">Смотреть портфолио</a>
+    </section>
+  </main>
+
+  <script>
+    // fade-in effect on scroll
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
