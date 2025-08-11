@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+dist/
+.vscode/
+.vercel/
+*.log
+.env
+.env.*
+!.env.example
+public/images/**
+!public/images/.gitkeep
