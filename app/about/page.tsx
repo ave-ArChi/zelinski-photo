@@ -9,7 +9,7 @@ export default function AboutPage() {
 Помогаю воплощать самые необычные идеи.
       </p>
       <div className="text-sm text-neutral-700 space-y-1">
-        <p>Telegram: <a className="underline" href="https://t.me/tg_ArChi" target="_blank">t.me/tg_ArChi</a></p>
+        <p>Telegram: <a className="underline" href="https://t.me/madinazelinski" target="_blank">t.me/madinazelinski</a></p>
       </div>
     </section>
   );
