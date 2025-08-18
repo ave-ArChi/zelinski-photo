@@ -1,6 +1,7 @@
-'use client';
-import { useState } from 'react';
-import Link from 'next/link';
+// app/components/Header.tsx
+"use client";
+import { useState } from "react";
+import Link from "next/link";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -12,31 +13,35 @@ export default function Header() {
           ZELINSKI PHOTO
         </Link>
 
-        {/* desktop */}
+        {/* Меню на десктопе */}
         <nav className="nav-desktop">
           <Link href="/portfolio">Portfolio</Link>
           <Link href="/prices">Prices</Link>
           <Link href="/about">About & Contacts</Link>
-          <a href="https://t.me/tg_ArChi" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a href="https://t.me/tg_ArChi" target="_blank" rel="noopener noreferrer">
+            Telegram
+          </a>
         </nav>
 
-        {/* mobile burger */}
+        {/* Бургер на мобиле/планшете */}
         <button
-          className="burger"
-          aria-label="Open menu"
+          className={`burger ${open ? "active" : ""}`}
+          aria-label="Toggle menu"
           aria-expanded={open}
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpen((v) => !v)}
         >
-          <span/><span/><span/>
+          <span /><span /><span />
         </button>
       </div>
 
-      {/* mobile drawer */}
-      <nav className={`nav-mobile ${open ? 'open' : ''}`} onClick={() => setOpen(false)}>
+      {/* Выдвижное мобильное меню */}
+      <nav className={`nav-mobile ${open ? "open" : ""}`} onClick={() => setOpen(false)}>
         <Link href="/portfolio">Portfolio</Link>
         <Link href="/prices">Prices</Link>
         <Link href="/about">About & Contacts</Link>
-        <a href="https://t.me/tg_ArChi" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="https://t.me/tg_ArChi" target="_blank" rel="noopener noreferrer">
+          Telegram
+        </a>
       </nav>
     </header>
   );
