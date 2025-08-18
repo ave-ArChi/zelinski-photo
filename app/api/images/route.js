@@ -1,4 +1,3 @@
-// app/api/images/route.js
 import fs from 'fs';
 import path from 'path';
 
@@ -14,10 +13,7 @@ export async function GET() {
       .filter((f) => /\.(jpe?g|png|webp|gif|avif)$/i.test(f))
       .sort()
       .map((f) => `/images/${f}`);
-  } catch (e) {
-    // можно залогировать при желании
-    // console.error(e);
-  }
+  } catch (e) {}
 
   return new Response(JSON.stringify(files), {
     headers: {
