@@ -1,9 +1,21 @@
 import "./globals.css";
 import Link from "next/link";
+import Header from './components/Header';
 
 export const metadata = {
   title: "Zelinski Photo",
   description: "Портфолио фотографа и ретушёра",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="ru">
+      <body>
+        <Header />
+        <main className="container">{children}</main>
+      </body>
+    </html>
+  );
 };
 
 export default function RootLayout({ children }) {
