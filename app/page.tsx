@@ -1,2 +1,3 @@
-// app/page.tsx
-export { default } from './portfolio/page'; // просто используем ту же страницу
+// app/page.js
+import Portfolio from "./portfolio/page.jsx";
+export default Portfolio;
