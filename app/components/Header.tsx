@@ -12,7 +12,7 @@ export default function Header() {
           ZELINSKI PHOTO
         </Link>
 
-        {/* Desktop nav */}
+        {/* desktop */}
         <nav className="nav-desktop">
           <Link href="/portfolio">Portfolio</Link>
           <Link href="/prices">Prices</Link>
@@ -20,7 +20,7 @@ export default function Header() {
           <a href="https://t.me/tg_ArChi" target="_blank" rel="noopener noreferrer">Telegram</a>
         </nav>
 
-        {/* Burger button (mobile) */}
+        {/* mobile burger */}
         <button
           className="burger"
           aria-label="Open menu"
@@ -31,7 +31,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile drawer */}
+      {/* mobile drawer */}
       <nav className={`nav-mobile ${open ? 'open' : ''}`} onClick={() => setOpen(false)}>
         <Link href="/portfolio">Portfolio</Link>
         <Link href="/prices">Prices</Link>
