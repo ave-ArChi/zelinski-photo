@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Lightbox from "../components/Lightbox";
+import Lightbox from "../components/Lightbox.jsx";
 
 export default function PortfolioPage() {
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState([]);
   const [open, setOpen] = useState(false);
   const [idx, setIdx] = useState(0);
 
@@ -15,7 +15,7 @@ export default function PortfolioPage() {
       .catch(() => setImages([]));
   }, []);
 
-  const openAt = (i: number) => { setIdx(i); setOpen(true); };
+  const openAt = (i) => { setIdx(i); setOpen(true); };
 
   return (
     <>
