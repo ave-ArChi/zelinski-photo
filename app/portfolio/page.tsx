@@ -9,8 +9,11 @@ export default function PortfolioPage() {
   const gridRef = useRef(null);
 
   useEffect(() => {
-    fetch('/api/images').then(r => r.json()).then(setImages).catch(() => setImages([]));
-  }, []);
+  fetch(`/api/images?ts=${Date.now()}`, { cache: "no-store" })
+    .then((r) => r.json())
+    .then(setImages)
+    .catch(() => setImages([]));
+}, []);
 
   useEffect(() => {
     const grid = gridRef.current;
