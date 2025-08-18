@@ -1,69 +1,40 @@
-/* Базовая типографика */
-html,body { margin:0; padding:0; }
-body {
-  font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans','Apple Color Emoji','Segoe UI Emoji',sans-serif;
-  color:#111;
-}
+/* База */
+html,body{margin:0;padding:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans','Apple Color Emoji','Segoe UI Emoji',sans-serif;color:#111}
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
 
-/* Контейнер */
-.container { max-width:1200px; margin:0 auto; padding:0 16px; }
+/* Шапка/бренд */
+.brand:hover{opacity:.9}
+.nav-desktop a{color:#111;text-decoration:none;font-weight:500}
+.nav-desktop a:hover{opacity:.75}
 
-/* ===== ШАПКА ===== */
-.site-header {
-  position:sticky; top:0; z-index:40; background:#fff;
-  border-bottom:1px solid rgba(0,0,0,.06);
-}
-.header-row {
-  height:64px; display:flex; align-items:center; justify-content:space-between; gap:16px;
-}
-.brand {
-  color:#111; text-decoration:none; font-weight:800; letter-spacing:.28em;
-  font-size:clamp(18px,4.2vw,28px); white-space:nowrap;
-}
-.brand:hover { opacity:.9; }
-
-/* Десктопное меню */
-.nav-desktop { display:flex; gap:24px; }
-.nav-desktop a { color:#111; text-decoration:none; font-weight:500; }
-.nav-desktop a:hover { opacity:.75; }
-
-/* Бургер для мобилы */
-.burger {
-  display:none; width:40px; height:40px; border:0; background:transparent; padding:0;
-  align-items:center; justify-content:center; flex-direction:column; gap:5px;
-}
-.burger span { display:block; width:22px; height:2px; background:#111; border-radius:2px;
-  transition:transform .2s ease, opacity .2s ease;
-}
-.burger.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-.burger.active span:nth-child(2){ opacity:0; }
-.burger.active span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
-
+/* Бургер на мобилке */
 @media (max-width:1024px){
-  .nav-desktop { display:none; }
-  .burger { display:flex; }
+  .nav-desktop{display:none}
+  .burger{display:flex !important}
 }
 
-/* Мобильное меню (выдвижка) */
+/* Анимация бургера */
+.burger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.active span:nth-child(2){opacity:0}
+.burger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Мобильная выдвижка */
 .nav-mobile{
-  position:fixed; inset:64px 0 0 0; background:#fff; display:flex; flex-direction:column;
-  padding:16px; gap:12px; transform:translateY(-100%); transition:transform .25s ease; z-index:30;
-  border-top:1px solid rgba(0,0,0,.06);
+  position:fixed;inset:64px 0 0 0;background:#fff;display:flex;flex-direction:column;
+  padding:16px;gap:12px;transform:translateY(-100%);transition:transform .25s ease;z-index:30;
+  border-top:1px solid rgba(0,0,0,.06)
 }
-.nav-mobile a{ display:block; padding:14px 10px; border-radius:10px; text-decoration:none; color:#111; background:#f7f7f7; }
-.nav-mobile a:active{ background:#eee; }
-.nav-mobile.open{ transform:translateY(0); }
+.nav-mobile a{display:block;padding:14px 10px;border-radius:10px;text-decoration:none;color:#111;background:#f7f7f7}
+.nav-mobile a:active{background:#eee}
+.nav-mobile.open{transform:translateY(0)}
 
-/* ===== ГАЛЕРЕЯ (masonry через columns) ===== */
-.gallery { column-count:3; column-gap:16px; }
-@media (max-width:1024px){ .gallery { column-count:2; } }
-@media (max-width:640px){ .gallery { column-count:1; } }
-
-.gallery-item { break-inside:avoid; -webkit-column-break-inside:avoid; margin:0 0 16px; display:block; }
-.gallery-item img { width:100%; height:auto; display:block; border-radius:8px; }
-
-/* Нежные разделители, если нужно где-то ещё */
-.border-soft { border-color: rgba(0,0,0,.06); }
+/* Галерея masonry */
+.gallery{column-count:3;column-gap:16px}
+@media (max-width:1024px){.gallery{column-count:2}}
+@media (max-width:640px){.gallery{column-count:1}}
+.gallery-item{break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 16px;display:block}
+.gallery-item img{width:100%;height:auto;display:block;border-radius:8px}
 
 /* ===== Lightbox ===== */
 .lb-overlay{
@@ -96,4 +67,3 @@ body {
   .lb-prev{ left:8px } .lb-next{ right:8px }
   .lb-close{ top:8px; right:8px }
 }
-
