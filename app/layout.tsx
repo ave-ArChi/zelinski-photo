@@ -1,6 +1,6 @@
 // app/layout.js
 import "./globals.css";
-import Header from "./components/Header.jsx";
+import Header from "./components/Header";
 
 export const metadata = {
   title: "Zelinski Photo",
