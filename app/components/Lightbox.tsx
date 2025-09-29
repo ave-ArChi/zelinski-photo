@@ -1,3 +1,4 @@
+// app/components/Lightbox.jsx
 "use client";
 import { useEffect, useRef, useCallback } from "react";
 
@@ -31,21 +32,22 @@ export default function Lightbox({ images, index, onClose, onIndex }) {
   };
 
   useEffect(() => {
+    // preload neighbors
     const a = new Image(); a.src = images[(index + 1) % images.length];
     const b = new Image(); b.src = images[(index - 1 + images.length) % images.length];
   }, [index, images]);
 
   return (
     <div className="lb-overlay" onClick={onClose} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-      <button className="lb-btn lb-close" aria-label="Close" onClick={(e) => { e.stopPropagation(); onClose(); }}>✕</button>
-      <button className="lb-btn lb-prev" aria-label="Previous" onClick={(e) => { e.stopPropagation(); prev(); }}>‹</button>
+      <button className="lb-btn lb-close" aria-label="Close" onClick={(e)=>{e.stopPropagation(); onClose();}}>✕</button>
+      <button className="lb-btn lb-prev" aria-label="Previous" onClick={(e)=>{e.stopPropagation(); prev();}}>‹</button>
 
-      <figure className="lb-figure" onClick={(e) => e.stopPropagation()}>
-        <img className="lb-img" src={images[index]} alt={`image ${index + 1} of ${images.length}`} />
-        <figcaption className="lb-cap">{index + 1} / {images.length}</figcaption>
+      <figure className="lb-figure" onClick={(e)=>e.stopPropagation()}>
+        <img className="lb-img" src={images[index]} alt={`image ${index+1}`} />
+        <figcaption className="lb-cap">{index+1} / {images.length}</figcaption>
       </figure>
 
-      <button className="lb-btn lb-next" aria-label="Next" onClick={(e) => { e.stopPropagation(); next(); }}>›</button>
+      <button className="lb-btn lb-next" aria-label="Next" onClick={(e)=>{e.stopPropagation(); next();}}>›</button>
     </div>
   );
 }
