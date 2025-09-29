@@ -1,49 +1,88 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Lightbox from "../components/Lightbox.jsx";
 
 export default function PortfolioPage() {
-  const [images, setImages] = useState([]);
-  const [open, setOpen] = useState(false);
-  const [idx, setIdx] = useState(0);
+  const [images, setImages] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch(`/api/images?ts=${Date.now()}`, { cache: "no-store" })
-      .then((r) => r.json())
-      .then((arr) => setImages(Array.isArray(arr) ? arr : []))
-      .catch(() => setImages([]));
+    fetch("/api/images")
+      .then((res) => res.json())
+      .then((data) => setImages(data))
+      .catch((err) => console.error("Ошибка загрузки изображений:", err));
   }, []);
 
-  const openAt = (i) => { setIdx(i); setOpen(true); };
+  const openLightbox = (index: number) => setCurrentIndex(index);
+  const closeLightbox = () => setCurrentIndex(null);
+
+  const showPrev = () => {
+    if (currentIndex !== null) {
+      setCurrentIndex((currentIndex - 1 + images.length) % images.length);
+    }
+  };
+
+  const showNext = () => {
+    if (currentIndex !== null) {
+      setCurrentIndex((currentIndex + 1) % images.length);
+    }
+  };
 
   return (
-    <>
-      <section className="gallery" aria-label="Portfolio gallery">
-        {images.map((src, i) => (
-          <button
-            key={src}
-            className="gallery-item"
-            onClick={() => openAt(i)}
-            aria-label="Open image"
-            style={{ cursor: "zoom-in", background: "transparent", padding: 0, border: 0 }}
+    <div>
+      {/* Галерея */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        {images.map((src, idx) => (
+          <div
+            key={idx}
+            className="cursor-pointer relative w-full aspect-square"
+            onClick={() => openLightbox(idx)}
           >
             <Image
-              src={src}
-              alt=""
-              width={1200}
-              height={1600}
-              loading="lazy"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              style={{ width: "100%", height: "auto" }}
+              src={`/images/${src}`}
+              alt={`Фото ${idx + 1}`}
+              fill
+              className="object-cover rounded"
             />
-          </button>
+          </div>
         ))}
-      </section>
+      </div>
 
-      {open && images.length > 0 && (
-        <Lightbox images={images} index={idx} onClose={() => setOpen(false)} onIndex={setIdx} />
+      {/* Лайтбокс */}
+      {currentIndex !== null && (
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-6 text-white text-3xl"
+          >
+            ✕
+          </button>
+
+          <button
+            onClick={showPrev}
+            className="absolute left-4 text-white text-4xl px-3"
+          >
+            ‹
+          </button>
+
+          <div className="relative w-[90%] h-[80%]">
+            <Image
+              src={`/images/${images[currentIndex]}`}
+              alt={`Фото ${currentIndex + 1}`}
+              fill
+              className="object-contain"
+            />
+          </div>
+
+          <button
+            onClick={showNext}
+            className="absolute right-4 text-white text-4xl px-3"
+          >
+            ›
+          </button>
+        </div>
       )}
-    </>
+    </div>
   );
 }
