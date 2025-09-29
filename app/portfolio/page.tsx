@@ -1,7 +1,7 @@
 // app/portfolio/page.jsx
 "use client";
 import { useEffect, useState } from "react";
-import Lightbox from "../components/Lightbox.jsx";
+import Lightbox from "../components/Lightbox";
 
 export default function PortfolioPage() {
   const [images, setImages] = useState([]);
