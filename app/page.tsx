@@ -1,3 +1,6 @@
 // app/page.js
-import Portfolio from "./portfolio/page.jsx";
-export default Portfolio;
+import { redirect } from "next/navigation";
+
+export default function Home() {
+  redirect("/portfolio");
+}
