@@ -21,7 +21,7 @@ export default function PortfolioPage() {
     if (currentIndex !== null) {
       setCurrentIndex((currentIndex - 1 + images.length) % images.length);
     }
-  };
+  };Q
 
   const showNext = () => {
     if (currentIndex !== null) {
