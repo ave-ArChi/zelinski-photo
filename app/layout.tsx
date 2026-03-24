@@ -1,4 +1,4 @@
-// app/layout.js
+// app/layout.tsx
 import "./globals.css";
 import Link from "next/link";
 
@@ -7,14 +7,14 @@ export const metadata = {
   description: "Портфолио фотографа и ретушёра",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru">
       <body>
-        {/* Top title */}
+        {/* Top bar */}
         <div className="topbar">
           <div className="container">
-            <div className="brand">ZELINSKI PHOTO</div>
+            <div className="brand">Zelinski Photo</div>
           </div>
         </div>
 
@@ -24,7 +24,10 @@ export default function RootLayout({ children }) {
               <Link href="/portfolio">Portfolio</Link>
               <Link href="/pricing">Prices</Link>
               <Link href="/about">About & Contacts</Link>
-              <a href="https://t.me/tg_ArChi" target="_blank" rel="noopener noreferrer">Telegram</a>
+              <div className="side-nav-divider" />
+              <a href="https://t.me/madinazelinski" target="_blank" rel="noopener noreferrer" className="side-tg">
+                Telegram
+              </a>
             </nav>
           </aside>
 
@@ -34,7 +37,7 @@ export default function RootLayout({ children }) {
         </div>
 
         <footer className="site-footer">
-          © {new Date().getFullYear()} Zelinski Photo · <a href="https://t.me/tg_ArChi" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+          © {new Date().getFullYear()} Zelinski Photo · <a href="https://t.me/madinazelinski" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
         </footer>
       </body>
     </html>
