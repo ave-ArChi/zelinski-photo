@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run build
+RUN npm ci --prefer-offline || npm ci --registry https://registry.npmmirror.com
 
 FROM node:20-alpine AS runner
 WORKDIR /app
