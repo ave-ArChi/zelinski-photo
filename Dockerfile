@@ -1,16 +1,20 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
+
+# Отдельный слой для зависимостей — кэшируется
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --fetch-retry-mintimeout 20000 --fetch-retry-maxtimeout 120000 --fetch-retries 5
+
 COPY . .
-RUN npm ci --prefer-offline || npm ci --registry https://registry.npmmirror.com
+RUN npm run build
 
 FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
-COPY --from=builder /app/.next ./.next
+
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
