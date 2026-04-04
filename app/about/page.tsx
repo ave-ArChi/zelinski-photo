@@ -1,13 +1,13 @@
+import { getContent } from "@/app/lib/data";
+
+export const dynamic = "force-dynamic";
+
 export default function AboutPage() {
+  const { about } = getContent();
   return (
     <section className="about-page">
       <h1 className="page-title">About &amp; Contacts</h1>
-      <p className="about-body">
-{`Привет! Меня зовут Мадина, я профессиональный фотограф и ретушёр.
-Имею 7-летний опыт коммерческих и творческих съёмок, модельных тестов и бьюти фотографии, знаю всё о качественной, красивой и естественной ретуши.
-Обожаю весь процесс от подготовки до воплощения идеи. Организовываю и стилизую съёмки, занимаюсь креативным мейкапом по запросу.
-Помогаю воплощать самые необычные идеи.`}
-      </p>
+      <p className="about-body">{about}</p>
       <div className="about-contacts">
         <div className="contact-row">
           <span>Telegram</span>

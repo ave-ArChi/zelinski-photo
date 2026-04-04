@@ -1,6 +1,6 @@
 {
   "name": "zelinski-photo",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,6 +11,7 @@
     "next": "14.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "jose": "^5.9.6",
     "yet-another-react-lightbox": "^3.21.6"
   },
   "devDependencies": {

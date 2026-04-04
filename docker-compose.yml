@@ -2,7 +2,21 @@ services:
   web:
     build: .
     restart: always
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     volumes:
       - ./public/images:/app/public/images
+      - ./data:/app/data
+    env_file:
+      - .env
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public/images:/srv/images:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - web
