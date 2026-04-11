@@ -348,3 +348,74 @@ a { color: inherit; text-decoration: none; }
 }
 .admin-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; }
 .admin-feature-row { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; }
+/* ── MOBILE MENU ── */
+.mob-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+}
+.mob-burger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform .3s, opacity .3s;
+  transform-origin: center;
+}
+.mob-burger span.open:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.mob-burger span.open:nth-child(2) { opacity: 0; }
+.mob-burger span.open:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mob-backdrop {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.3);
+  z-index: 90;
+}
+
+.mob-nav {
+  display: none;
+  position: fixed;
+  top: 0; right: 0;
+  width: 72vw; max-width: 300px;
+  height: 100vh;
+  background: #fff;
+  z-index: 100;
+  flex-direction: column;
+  padding: 48px 36px;
+  gap: 4px;
+  transform: translateX(100%);
+  transition: transform .35s cubic-bezier(.25,.46,.45,.94);
+  box-shadow: -8px 0 32px rgba(0,0,0,.08);
+}
+.mob-nav.open { transform: translateX(0); }
+
+.mob-nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; letter-spacing: .2em; text-transform: uppercase;
+  margin-bottom: 32px; color: var(--ink);
+}
+.mob-nav a {
+  font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--muted); padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none; transition: color .2s;
+}
+.mob-nav a:hover { color: var(--ink); }
+.mob-nav-divider { margin: 12px 0; }
+.mob-nav-tg { color: var(--accent) !important; border-bottom: none !important; margin-top: 8px; }
+
+@media (max-width: 768px) {
+  .mob-burger { display: flex; }
+  .mob-nav { display: flex; }
+  .mob-backdrop { display: block; }
+  .sidebar { display: none; }
+  .main-grid { grid-template-columns: 1fr; }
+}

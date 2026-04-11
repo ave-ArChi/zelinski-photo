@@ -1,6 +1,7 @@
 // app/layout.tsx
 import "./globals.css";
 import Link from "next/link";
+import MobileMenu from "./components/MobileMenu";
 
 export const metadata = {
   title: "Zelinski Photo",
@@ -11,10 +12,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru">
       <body>
-        {/* Top bar */}
         <div className="topbar">
           <div className="container">
             <div className="brand">Zelinski Photo</div>
+            <MobileMenu />
           </div>
         </div>
 
@@ -30,7 +31,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </a>
             </nav>
           </aside>
-
           <main className="content">
             {children}
           </main>
