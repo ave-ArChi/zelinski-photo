@@ -32,7 +32,7 @@ export default function PortfolioPage() {
         {images.map((src, i) => (
           <button
             key={src}
-            className={`gallery-item size-${(i % 5) + 1}`}
+            className={`gallery-item size-${(i % 8) + 1}`}
             onClick={() => openAt(i)}
             aria-label="Open image"
           >
