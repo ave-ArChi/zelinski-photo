@@ -114,7 +114,7 @@ a { color: inherit; text-decoration: none; }
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 220px;
+  grid-auto-rows: 180px;
   grid-auto-flow: dense;
   gap: 8px;
   padding: 4px 0;
@@ -145,13 +145,13 @@ a { color: inherit; text-decoration: none; }
   filter: saturate(1.05);
 }
 
-/* Паттерн — dense заполняет дыры автоматически */
-.gallery-item.size-1 { grid-column: span 2; grid-row: span 2; }
+/* Только вертикальные растяжки — без широких плиток */
+.gallery-item.size-1 { grid-column: span 1; grid-row: span 2; }
 .gallery-item.size-2 { grid-column: span 1; grid-row: span 1; }
-.gallery-item.size-3 { grid-column: span 1; grid-row: span 2; }
-.gallery-item.size-4 { grid-column: span 1; grid-row: span 1; }
+.gallery-item.size-3 { grid-column: span 1; grid-row: span 1; }
+.gallery-item.size-4 { grid-column: span 1; grid-row: span 2; }
 .gallery-item.size-5 { grid-column: span 1; grid-row: span 1; }
-.gallery-item.size-6 { grid-column: span 2; grid-row: span 1; }
+.gallery-item.size-6 { grid-column: span 1; grid-row: span 1; }
 .gallery-item.size-7 { grid-column: span 1; grid-row: span 2; }
 .gallery-item.size-8 { grid-column: span 1; grid-row: span 1; }
 
