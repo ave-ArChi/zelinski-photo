@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="topbar">
           <div className="container">
-            <div className="brand">Zelinski Photo</div>
+            <Link href="/portfolio" className="brand">Zelinski Photo</Link>
             <MobileMenu />
           </div>
         </div>
